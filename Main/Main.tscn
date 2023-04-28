@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Target/Target.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Knifes/KnifeGenerator.tscn" type="PackedScene" id=3]
+
+[node name="MainScene" type="Node"]
+
+[node name="Target" parent="." instance=ExtResource( 2 )]
+position = Vector2( 504, 202 )
+
+[node name="KnifeGenerator" parent="." instance=ExtResource( 3 )]
+position = Vector2( 504, 500 )
+
+[connection signal="arrow_entered" from="Target" to="KnifeGenerator" method="_on_Target_arrow_entered"]
