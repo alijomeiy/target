@@ -6,12 +6,13 @@ export var id: int
 export var speed: float
 
 var state
+var target
 var direction
 var key_pressed_id
 
 func _ready():
 	state = "begin"
-	var target = get_node("../Target")
+	target = get_node("../Target")
 	target.connect("arrow_entered", self, "_on_Target_arrow_entered")
 	key_pressed_id = "shoot_" + str(id)
 	direction = target.global_position - global_position
@@ -33,6 +34,12 @@ func move(delta):
 	position += direction * speed * delta
 
 func _on_Target_arrow_entered(area):
-	print("on arrow entered!")
 	if area == $Area2D:
 		state = "collide"
+
+func _on_Area2D_area_entered(area):
+	print("target:", target.layer, " --- area: ", area.collision_layer)
+	if target.layer == area.collision_layer:
+		return
+	print(area.name)
+	print("game over!")

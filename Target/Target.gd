@@ -4,10 +4,12 @@ signal arrow_entered(area)
 
 var added_list
 var other_knife
+var layer
 
 func _ready():
 	added_list = Array()
 	other_knife = $OthersKnife
+	layer = $PhysicArea.collision_layer
 
 func _process(delta):
 	rotation_degrees += 1
