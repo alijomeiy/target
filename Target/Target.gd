@@ -25,6 +25,6 @@ func change_parent(area):
 	var rot = area_parent.global_rotation
 	var main_parent = area_parent.get_parent()
 	main_parent.remove_child(area_parent)
-	add_child(area_parent)
+	other_knife.add_child(area_parent)
 	area_parent.global_position = pos
 	area_parent.global_rotation = rot
